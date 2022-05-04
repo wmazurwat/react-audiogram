@@ -3,6 +3,7 @@ import { Record } from "./hearingTest";
 interface ResultsProps {
   results: Record[];
 }
+//użyć mapowania do opracowania wyników ( 0.1 przypusac do 0 db, 0,17 do 10 db idt.)
 const Results = ({ results }: ResultsProps) => {
   return (
     <div className="border-white border-2 p-2 m-2 flex-col">

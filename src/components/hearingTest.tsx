@@ -4,7 +4,7 @@ import { getSaoundCinfig, playSound } from "../utils/audio";
 
 const frequencies = [125, 500, 1000, 2000, 3000, 4000, 6000, 8000, 10000];
 const defaultVolume = 0.1;
-enum Ear {
+enum Ear { //enumeracja, predefiniowane wartości
   Left = "Left",
   Right = "Right",
 }
