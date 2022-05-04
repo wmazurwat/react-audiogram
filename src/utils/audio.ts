@@ -14,7 +14,7 @@ export const playNote = (ctx: AudioContext, note: number[]) => {
   }
 
 
-function playSound(context: AudioContext, arr: number[]) {
+export function playSound(context: AudioContext, arr: number[]) {
   var buf = new Float32Array(arr.length)
   for (var i = 0; i < arr.length; i++) buf[i] = arr[i]
   var buffer = context.createBuffer(1, buf.length, context.sampleRate)
@@ -29,7 +29,7 @@ function sineWaveAt(context: AudioContext ,sampleNumber: number, tone: number) {
   var sampleFreq = context.sampleRate / tone
   return Math.sin(sampleNumber / (sampleFreq / (Math.PI * 2)))
 }
-const getSaoundCinfig = (ctx: AudioContext,volume:number = 0.1, seconds:number = 1, tone:number = 1000) => {
+export const getSaoundCinfig = (ctx: AudioContext,volume:number = 0.1, seconds:number = 1, tone:number = 1000) => {
   const arr = [];
   for (var i = 0; i < ctx.sampleRate * seconds; i++) {
     arr[i] = sineWaveAt(ctx, i, tone) * volume
@@ -41,7 +41,7 @@ const getSaoundCinfig = (ctx: AudioContext,volume:number = 0.1, seconds:number =
     tone
   }
 }
-export const playSound2 = (ctx: AudioContext): NodeJS.Timer => {
+export const playCalibrationSound = (ctx: AudioContext): NodeJS.Timer => {
   const coef = Math.pow(10, 5/20);
 
   const s1 = getSaoundCinfig(ctx)
