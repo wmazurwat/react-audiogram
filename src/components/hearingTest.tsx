@@ -8,28 +8,45 @@ enum Ear {
   Left = "Left",
   Right = "Right",
 }
-const HearingTest = () => {
+export interface Record {
+  frequency: number;
+  ear: Ear;
+  volume: number;
+}
+
+interface HearingTestProps {
+  setResults: (value: Record[]) => void;
+}
+const HearingTest = ({ setResults }: HearingTestProps) => {
   const audio = useAudio();
   const [earTested, setEarTested] = useState(Ear.Left);
+  const [records, setRecords] = useState<Record[]>([]);
 
   const [volume, setVolume] = useState(defaultVolume);
   const [frequencyIndex, setFrequencyIndex] = useState(0);
 
   const onStart = () => {
-    console.log(volume, frequencies[frequencyIndex]);
+    console.log(volume, frequencies[frequencyIndex], records);
     const s1 = getSaoundCinfig(audio, volume, 1, frequencies[frequencyIndex]);
     playSound(audio, s1.arr);
   };
   const onYes = () => {
     setFrequencyIndex(frequencyIndex + 1);
     setVolume(defaultVolume);
+    setRecords([
+      ...records,
+      {
+        frequency: frequencies[frequencyIndex],
+        volume,
+        ear: earTested,
+      },
+    ]);
     if (frequencyIndex >= frequencies.length - 1) {
       setFrequencyIndex(0);
       setEarTested(Ear.Right);
     }
     if (earTested === Ear.Right && frequencyIndex >= frequencies.length - 1) {
-      // complete
-      console.log("completed");
+      setResults(records);
     }
   };
   const onNo = () => {
