@@ -11,7 +11,7 @@ function App() {
   return (
     <div className="App bg-slate-600 h-screen">
       <header className="">
-        <p className="text-6xl m-5 p-5">Audigram</p>
+        <p className="text-6xl m-5 p-5">Audiogram</p>
       </header>
       {isCalibrated ? (
         results ? (
