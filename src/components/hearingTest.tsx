@@ -4,7 +4,7 @@ import { getSaoundCinfig, playSound } from "../utils/audio";
 
 const frequencies = [125, 500, 1000, 2000, 3000, 4000, 6000, 8000, 10000];
 const defaultVolume = 0.1;
-enum Ear { //enumeracja, predefiniowane wartości
+export enum Ear { //enumeracja, predefiniowane wartości
   Left = "Left",
   Right = "Right",
 }
@@ -23,12 +23,12 @@ const HearingTest = ({ setResults }: HearingTestProps) => {
   const [records, setRecords] = useState<Record[]>([]);
 
   const [volume, setVolume] = useState(defaultVolume);
+
   const [frequencyIndex, setFrequencyIndex] = useState(0);
 
   const onStart = () => {
-    console.log(volume, frequencies[frequencyIndex], records);
     const s1 = getSaoundCinfig(audio, volume, 1, frequencies[frequencyIndex]);
-    playSound(audio, s1.arr);
+    playSound(audio, s1.arr, earTested);
   };
   const onYes = () => {
     setFrequencyIndex(frequencyIndex + 1);
