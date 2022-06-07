@@ -1,8 +1,12 @@
-# Getting Started with Create React App
+# Audiogram
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+An audiogram is a graph that shows the audible threshold for standardized frequencies as measured by an audiometer. The Y axis represents intensity measured in decibels and the X axis represents frequency measured in hertz.
+
+
 
 ## Available Scripts
+
+This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 In the project directory, you can run:
 
